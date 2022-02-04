@@ -48,6 +48,14 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <DefineConstants>RELEASE</DefineConstants>
     <AndroidSupportedAbis>armeabi-v7a;x86</AndroidSupportedAbis>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Users\saman\AppData\Local\Xamarin\Mono for Android\Keystore\SPASK.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Athr12624120@ask</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>SPASK</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Athr12624120@ask</AndroidSigningKeyPass>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
