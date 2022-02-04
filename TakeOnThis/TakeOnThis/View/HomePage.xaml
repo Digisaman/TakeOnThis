@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="TakeOnThis.View.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pages="clr-namespace:TakeOnThis.View"
+    android:TabbedPage.BarItemColor="{StaticResource PrimaryColor}"
+    android:TabbedPage.BarSelectedItemColor="{StaticResource SecondaryColor}"
+    android:TabbedPage.IsSwipePagingEnabled="False"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    BarBackgroundColor="{OnPlatform Android=White}">
+    <pages:TakeOnThisNavigationPage Title="Dashboard" Icon="{OnPlatform Android=tab_dashboard, iOS=tab_chat}">
+        <x:Arguments>
+            <pages:MainPage />
+        </x:Arguments>
+    </pages:TakeOnThisNavigationPage>
+
+    <pages:TakeOnThisNavigationPage Title="Profile" Icon="{OnPlatform Android=tab_person, iOS=tab_dashboard}">
+        <x:Arguments>
+            <pages:ProfilePage />
+        </x:Arguments>
+    </pages:TakeOnThisNavigationPage>
+    <!--
+    <pages:TakeOnThisNavigationPage Title="Favs"
+                    Icon="{OnPlatform Android=tab_favorites, iOS=tab_favorites}">
+        <x:Arguments>
+            <pages:MainPage />
+        </x:Arguments>
+    </pages:TakeOnThisNavigationPage>
+    -->
+</TabbedPage>
