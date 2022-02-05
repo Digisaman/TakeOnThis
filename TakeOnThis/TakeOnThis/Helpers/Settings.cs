@@ -24,7 +24,13 @@ namespace TakeOnThis.Helpers
         //    get => (defaultIP != "localhost" && defaultIP != "10.0.2.2");
         //}
 
-
+        public static string ServerPort
+        {
+            get
+            {
+                return "5000";
+            }
+        }
 
         public static string ServerIP
         {
