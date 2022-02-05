@@ -136,9 +136,8 @@ namespace TakeOnThis.Core
         {
             return new List<string>
                         {
-                                ".NET",
-                                "ASP.NET",
-                                "Xamarin"
+                                "Audience",
+                                "Actors"
                         };
         }
     }
