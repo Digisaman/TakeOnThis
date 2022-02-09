@@ -53,7 +53,7 @@ namespace TakeOnThis.Helpers
         public static string Group
         {
             //get => Preferences.Get(nameof(Group), string.Empty);
-            get => TakeOnThis.Shared.Models.ChatSettings.ChatGroup;
+            get => TakeOnThis.Shared.Models.ChatSettings.DefaultChatGroup;
 
             set => Preferences.Set(nameof(Group), value);
         }

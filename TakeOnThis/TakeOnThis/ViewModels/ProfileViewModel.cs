@@ -1,7 +1,7 @@
 ﻿using MvvmHelpers;
 using TakeOnThis.Helpers;
 
-namespace TakeOnThis.ViewModel
+namespace TakeOnThis.ViewModels
 {
     public class ProfileViewModel : BaseViewModel
     {

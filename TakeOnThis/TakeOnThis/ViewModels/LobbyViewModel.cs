@@ -5,8 +5,9 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using TakeOnThis.Helpers;
 using TakeOnThis.View;
+using TakeOnThis.Views;
 
-namespace TakeOnThis.ViewModel
+namespace TakeOnThis.ViewModels
 {
     public class LobbyViewModel : ViewModelBase
     {

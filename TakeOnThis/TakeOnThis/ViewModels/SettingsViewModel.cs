@@ -1,4 +1,4 @@
-﻿using TakeOnThis.ViewModel;
+﻿using TakeOnThis.ViewModels;
 
 namespace TakeOnThis.ViewModels
 {

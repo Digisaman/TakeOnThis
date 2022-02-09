@@ -5,16 +5,14 @@ namespace TakeOnThis.Shared.Models
     public partial class MediaInfo
     {
         public MediaInfo()
-        {
-            AUDIO = new List<MediaFile>();
-            THSUB = new List<MediaFile>();
-            VDSUB = new List<MediaFile>();
+        {   
+            IMAGE = new List<MediaFile>();
+            VIDEO = new List<MediaFile>();
         }
-        public List<MediaFile> AUDIO { get; set; }
+        public List<MediaFile> IMAGE { get; set; }
+        
 
-        public List<MediaFile> THSUB { get; set; }
-
-        public List<MediaFile> VDSUB { get; set; }
+        public List<MediaFile> VIDEO { get; set; }
 
         public DownloadCategory CurrentCategory { get; set; }
     }

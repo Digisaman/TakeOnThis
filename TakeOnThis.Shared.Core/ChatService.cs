@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using TakeOnThis.Core.EventHandlers;
+using TakeOnThis.Shared.Models;
 
 namespace TakeOnThis.Core
 {
@@ -27,8 +28,8 @@ namespace TakeOnThis.Core
             //var port = (urlRoot == "localhost" || urlRoot == "10.0.2.2") ?
             //    (useHttps ? ":5001" : ":5000") :
             //    string.Empty;
-
-            var port = (useHttps ? ":5001" : ":5000");
+            
+            var port = (useHttps ? $":{ChatSettings.DefaultHttpsPort}" : $":{ChatSettings.DefaultHttpPort}");
 
             var url = $"http{(useHttps ? "s" : string.Empty)}://{urlRoot}{port}/hubs/chat";
             hubConnection = new HubConnectionBuilder()
@@ -51,24 +52,24 @@ namespace TakeOnThis.Core
                 }
             };
 
-            hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+            hubConnection.On<string, string>(ChatSettings.RecieveCommand, (user, message) =>
             {
                 OnReceivedMessage?.Invoke(this, new MessageEventArgs(message, user));
             });
 
-            hubConnection.On<string>("Entered", (user) =>
+            hubConnection.On<string>(ChatSettings.EnteredCommand, (user) =>
             {
                 OnEnteredOrExited?.Invoke(this, new MessageEventArgs($"{user} entered.", user));
             });
 
 
-            hubConnection.On<string>("Left", (user) =>
+            hubConnection.On<string>(ChatSettings.LeftCommand, (user) =>
             {
                 OnEnteredOrExited?.Invoke(this, new MessageEventArgs($"{user} left.", user));
             });
 
 
-            hubConnection.On<string>("EnteredOrLeft", (message) =>
+            hubConnection.On<string>(ChatSettings.EnteredOrLeftCommand, (message) =>
             {
                 OnEnteredOrExited?.Invoke(this, new MessageEventArgs(message, message));                
             });
@@ -136,8 +137,7 @@ namespace TakeOnThis.Core
         {
             return new List<string>
                         {
-                                "Audience",
-                                "Actors"
+                                ChatSettings.DefaultChatGroup
                         };
         }
     }

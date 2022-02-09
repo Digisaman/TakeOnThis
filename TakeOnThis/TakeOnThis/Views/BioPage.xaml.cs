@@ -7,7 +7,7 @@ using TakeOnThis.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TakeOnThis.View
+namespace TakeOnThis.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BioPage : ContentPage

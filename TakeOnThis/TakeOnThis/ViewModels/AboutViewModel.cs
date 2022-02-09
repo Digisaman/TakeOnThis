@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using TakeOnThis.ViewModel;
+using TakeOnThis.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 

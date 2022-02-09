@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using TakeOnThis.ViewModel;
+using TakeOnThis.ViewModels;
 
-namespace TakeOnThis.View
+namespace TakeOnThis.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GroupChatPage : ContentPage

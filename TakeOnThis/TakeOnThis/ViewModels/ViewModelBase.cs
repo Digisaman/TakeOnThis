@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using TakeOnThis.Core;
 using TakeOnThis.Interfaces;
 
-namespace TakeOnThis.ViewModel
+namespace TakeOnThis.ViewModels
 {
     public class ViewModelBase : BaseViewModel
     {

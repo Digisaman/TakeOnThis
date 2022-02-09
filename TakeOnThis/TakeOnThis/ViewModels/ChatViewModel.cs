@@ -7,7 +7,7 @@ using TakeOnThis.Helpers;
 using System.Linq;
 using System.Collections.ObjectModel;
 
-namespace TakeOnThis.ViewModel
+namespace TakeOnThis.ViewModels
 {
     public class ChatViewModel : ViewModelBase
     {
