@@ -15,21 +15,24 @@ namespace TakeOnThis.Helpers
         //        static readonly string defaultIP = "TakeOnThisr.azurewebsites.net";
         //#endif
 
-        public static readonly string defaultIP = "192.168.0.100";
+        static readonly string mefiaInfo = "";
 
-        public static bool UseHttps = false;
+        static readonly string defaultIP = "192.168.1.10";
 
-        //public static bool UseHttps
-        //{
-        //    get => (defaultIP != "localhost" && defaultIP != "10.0.2.2");
-        //}
+        static readonly string defaultPort = "5000";
+
+
+        public static bool UseHttps
+        {
+            get => false;
+         
+        }
 
         public static string ServerPort
         {
-            get
-            {
-                return "5000";
-            }
+           
+            get => Preferences.Get(nameof(ServerPort), defaultPort);
+            set => Preferences.Set(nameof(ServerPort), value);
         }
 
         public static string ServerIP
@@ -46,11 +49,19 @@ namespace TakeOnThis.Helpers
             set => Preferences.Set(nameof(UserName), value);
         }
 
-        
+
         public static string Group
         {
-            get => Preferences.Get(nameof(Group), string.Empty);
+            //get => Preferences.Get(nameof(Group), string.Empty);
+            get => TakeOnThis.Shared.Models.ChatSettings.ChatGroup;
+
             set => Preferences.Set(nameof(Group), value);
+        }
+
+        public static string MediaInfo
+        {
+            get => Preferences.Get(nameof(MediaInfo), mefiaInfo);
+            set => Preferences.Set(nameof(MediaInfo), value);
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using MvvmHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using TakeOnThis.Helpers;
 
 namespace TakeOnThis.ViewModel

@@ -20,13 +20,13 @@
         </Grid.ColumnDefinitions>
         <Button Grid.Row="0" x:Name="btnStartServer" Content="Start Server" 
                 HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" Click="btnStartServer_Click">
-          
+
         </Button>
         <TextBox Grid.Row="0" Grid.Column="1" 
                  x:Name="txtServerAddress"
                  Height="30" Width="200" 
                  Text="http://localhost:5000/" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        
+
         <Button x:Name="btnvdOpenSecondary" 
                     Grid.Row="0" Grid.Column="2" 
                     Height="30" Width="200"
@@ -53,12 +53,14 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                        <Label Content="Chat With Audience"/>
-                        <TextBox Width="200" x:Name="txtChat"/>
-                    </StackPanel>
-                    <Button Grid.Row="0" Grid.Column="1" x:Name="SendChat" Content="Send Chat" Click="SendChat_Click"></Button>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Send Message To Audience"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtChat"/>
+
+                    <Button Grid.Row="0" Grid.Column="2" x:Name="SendChat" Content="Send Message" Click="SendChat_Click">
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabVideo" Header="Video">
