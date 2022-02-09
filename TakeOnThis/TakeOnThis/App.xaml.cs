@@ -21,7 +21,7 @@ namespace TakeOnThis
 
             DependencyService.Register<ChatService>();
 
-            MainPage = new HomePage();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()
