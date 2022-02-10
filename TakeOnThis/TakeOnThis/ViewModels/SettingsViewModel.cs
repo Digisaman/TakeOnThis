@@ -1,4 +1,6 @@
-﻿using TakeOnThis.ViewModels;
+﻿using TakeOnThis.Interfaces;
+using TakeOnThis.ViewModels;
+using Xamarin.Forms;
 
 namespace TakeOnThis.ViewModels
 {
@@ -34,6 +36,9 @@ namespace TakeOnThis.ViewModels
         {
             Helpers.Settings.ServerIP = this.ServerIP;
             Helpers.Settings.ServerPort = this.ServerPort;
+
+            var dialogService = DependencyService.Get<IDialogService>();
+            dialogService.DisplayAlert("Information", "Seetings Saved", "");
         }
 
         
