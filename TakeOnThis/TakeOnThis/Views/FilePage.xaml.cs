@@ -114,9 +114,11 @@ namespace TakeOnThis.Views
             base.OnAppearing();
             this.mediaInfo = await GetFileUrls();
             this.currentIndex = 0;
+            
             if (this.mediaInfo.VIDEO.Count > 0)
             {
                 this.lblTitle.Text = "Downloading Video files...";
+                mediaInfo.CurrentCategory = DownloadCategory.Video;
                 downloader.DownloadFile(mediaInfo.VIDEO[currentIndex].Url, mediaInfo.CurrentCategory.ToString());
             }
 
