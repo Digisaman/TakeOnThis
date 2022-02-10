@@ -17,7 +17,7 @@ namespace TakeOnThis.Helpers
 
         static readonly string mefiaInfo = "";
 
-        static readonly string defaultIP = "192.168.1.10";
+        static readonly string defaultIP = "192.168.0.100";
 
         static readonly string defaultPort = "5000";
 
