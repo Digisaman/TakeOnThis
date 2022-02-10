@@ -6,6 +6,8 @@ using System;
 using TakeOnThis.Helpers;
 using System.Linq;
 using System.Collections.ObjectModel;
+using TakeOnThis.Shared.Models;
+using Newtonsoft.Json;
 
 namespace TakeOnThis.ViewModels
 {
@@ -30,9 +32,9 @@ namespace TakeOnThis.ViewModels
         }
         
 
-        public Command SendMessageCommand { get; }
-        public Command ConnectCommand { get; }
-        public Command DisconnectCommand { get; }
+        public MvvmHelpers.Commands.Command SendMessageCommand { get; }
+        public MvvmHelpers.Commands.Command ConnectCommand { get; }
+        public MvvmHelpers.Commands.Command DisconnectCommand { get; }
 
         Random random;
         public ChatViewModel()
@@ -45,9 +47,9 @@ namespace TakeOnThis.ViewModels
             ChatMessage = new ChatMessage();
             Messages = new ObservableCollection<ChatMessage>();
             Users = new ObservableCollection<User>();
-            SendMessageCommand = new Command(async () => await SendMessage());
-            ConnectCommand = new Command(async () => await Connect());
-            DisconnectCommand = new Command(async () => await Disconnect());
+            SendMessageCommand = new MvvmHelpers.Commands.Command(async () => await SendMessage());
+            ConnectCommand = new MvvmHelpers.Commands.Command(async () => await Connect());
+            DisconnectCommand = new MvvmHelpers.Commands.Command(async () => await Disconnect());
             random = new Random();
 
             ChatService.Init(Settings.ServerIP, Settings.UseHttps);
@@ -137,12 +139,53 @@ namespace TakeOnThis.ViewModels
             {
                 var first = Users.FirstOrDefault(u => u.Name == user);
 
-                Messages.Insert(0, new ChatMessage
+                if (message.StartsWith("{"))
                 {
-                    Message = message,
-                    User = user,
-                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
-                });
+                    ServiceMessage serviceMessage = JsonConvert.DeserializeObject<ServiceMessage>(message);
+                    if (serviceMessage != null)
+                    {
+                        switch (serviceMessage.Command)
+                        {
+                          
+                           
+                            case TakeOnThis.Shared.Models.Command.SendText:
+                                Messages.Insert(0, new ChatMessage
+                                {
+                                    Message = serviceMessage.Text,
+                                    User = user,
+                                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+                                });
+                                break;
+                            case TakeOnThis.Shared.Models.Command.SendImage:
+                                Messages.Insert(0, new ChatMessage
+                                {
+                                    Message = "Display Image",
+                                    User = user,
+                                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+                                });
+                                break;
+
+                            case TakeOnThis.Shared.Models.Command.SendVideo:
+                                Messages.Insert(0, new ChatMessage
+                                {
+                                    Message = "Display Video",
+                                    User = user,
+                                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+                                });
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    Messages.Clear();
+                    Messages.Insert(0, new ChatMessage
+                    {
+                        Message = message,
+                        User = user,
+                        Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+                    });
+                }
             });
         }
 
