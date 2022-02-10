@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:TakeOnThis.View"
              xmlns:viewmodel="clr-namespace:TakeOnThis.ViewModels"
              x:Class="TakeOnThis.Views.MainPage"
-             Title="Lobby">
+             Title="Welcome">
     <ContentPage.BindingContext>
         <viewmodel:LobbyViewModel/>
     </ContentPage.BindingContext>

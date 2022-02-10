@@ -50,7 +50,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Charsoo Theather Group"
+                <Button Margin="0,10,0,0" Text="Seemia Theather Group"
                         Command="{Binding OpenOwnerCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
