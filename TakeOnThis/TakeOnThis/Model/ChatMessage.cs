@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TakeOnThis.Shared.Models;
 using Xamarin.Forms;
 
 namespace TakeOnThis.Model
@@ -64,6 +65,36 @@ namespace TakeOnThis.Model
                 return backgroundColor;
             }
             set => backgroundColor = value;
+        }
+
+        public MessageType Type { get; set; }
+
+        public ImageSource ImageSource { get; set; }
+
+        public bool IsText
+        {
+            get
+            {
+                return Type == MessageType.Text;
+            }
+        }
+
+
+        public bool IsImage
+        {
+            get
+            {
+                return Type == MessageType.Image;
+            }
+        }
+
+
+        public bool IsVideo
+        {
+            get
+            {
+                return Type == MessageType.Video;
+            }
         }
     }
 }

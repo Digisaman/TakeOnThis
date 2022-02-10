@@ -105,18 +105,33 @@
                                 Text="{Binding FirstLetter}"
                                 VerticalOptions="Center" />
                         </Frame>
-                        <Frame
+                        <StackLayout Grid.Column="1">
+                            <Frame
+                            IsVisible="{Binding IsText}"
+                            Margin="5,0,20,0"
+                            Padding="5"
+                            BackgroundColor="{Binding BackgroundColor}"
+                            CornerRadius="20"
+                            Visual="Material">
+                                <Label
+                                Margin="10,5"
+                                Text="{Binding Message}"
+                                TextColor="White" />
+                            </Frame>
+                            <Frame
+                            IsVisible="{Binding IsImage}"
                             Grid.Column="1"
                             Margin="5,0,20,0"
                             Padding="5"
                             BackgroundColor="{Binding BackgroundColor}"
                             CornerRadius="20"
                             Visual="Material">
-                            <Label
-                                Margin="10,5"
-                                Text="{Binding Message}"
-                                TextColor="White" />
-                        </Frame>
+                                <Image Source="{Binding ImageSource}"
+                                       WidthRequest="300"
+                                       HeightRequest="300"/>
+                            </Frame>
+                        </StackLayout>
+                        
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

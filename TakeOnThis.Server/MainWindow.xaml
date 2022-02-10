@@ -48,7 +48,8 @@
                 <Grid Margin="0,0,10,18">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
-                        <RowDefinition  Height="7*"/>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition  Height="6*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -56,11 +57,17 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="Send Message To Audience"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Send Message To Audience" />
                     <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtChat"/>
+                    <Button Grid.Row="0" Grid.Column="2" x:Name="SendChat" Content="Send Message" Click="SendChat_Click"/>
 
-                    <Button Grid.Row="0" Grid.Column="2" x:Name="SendChat" Content="Send Message" Click="SendChat_Click">
-                    </Button>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Send Image To Audience"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbImages" SelectedIndex="0">
+                        <ComboBoxItem>Image01.jpg</ComboBoxItem>
+                        <ComboBoxItem>Image02.jpg</ComboBoxItem>
+                        <ComboBoxItem>Image03.jpg</ComboBoxItem>
+                    </ComboBox>
+                    <Button Grid.Row="1" Grid.Column="2" x:Name="SendImage" Content="Send Image" Click="SendImage_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabVideo" Header="Video">
@@ -74,7 +81,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
-                    <ComboBox x:Name="cmbVideos" SelectedIndex="0">
+                    <ComboBox x:Name="cmbBackgroundVideos" SelectedIndex="0">
                         <ComboBoxItem>Video01.mp4</ComboBoxItem>
                         <ComboBoxItem>Video02.mp4</ComboBoxItem>
                         <ComboBoxItem>Video03.mp4</ComboBoxItem>

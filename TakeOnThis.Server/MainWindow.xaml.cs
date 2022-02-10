@@ -113,45 +113,6 @@ namespace TakeOnThis.Server
         }
 
 
-
-
-
-
-
-
-
-        private void btnvdPlayVideo_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.cmbVideos.SelectedItem == null)
-            {
-                return ;
-            }
-            MessageBoxResult result = MessageBox.Show("Are You Sure?", "Warning", MessageBoxButton.OKCancel);
-
-            if (result == MessageBoxResult.OK)
-            {
-
-                string fileName = this.cmbVideos.SelectedItem.ToString();
-                //string lang = this.cmbthLanguage.SelectionBoxItem.ToString();
-                //string scence = this.cmbvdScence.SelectionBoxItem.ToString();
-                string VideoDirectory = $"{Directory.GetCurrentDirectory()}\\Video";
-                string videoFilePath = $"{VideoDirectory}\\{fileName}";
-                if (File.Exists(videoFilePath))
-                {   
-                    
-                    _SecondaryWindow.Play(videoFilePath);
-
-
-                }
-                else
-                {
-                    MessageBox.Show("File Does NOT Exist");
-                }
-            }
-        }
-
-
-
         
 
         private void btnvdOpenSecondary_Click(object sender, RoutedEventArgs e)
@@ -244,7 +205,7 @@ namespace TakeOnThis.Server
 
         private void btnPlayVideo_Click(object sender, RoutedEventArgs e)
         {
-            if (this.cmbVideos.SelectedItem == null)
+            if (this.cmbBackgroundVideos.SelectedItem == null)
             {
                 return;
             }
@@ -253,7 +214,7 @@ namespace TakeOnThis.Server
             if (result == MessageBoxResult.OK)
             {
 
-                string fileName = this.cmbVideos.SelectionBoxItem.ToString();
+                string fileName = this.cmbBackgroundVideos.SelectionBoxItem.ToString();
                 //string lang = this.cmbthLanguage.SelectionBoxItem.ToString();
                 //string scence = this.cmbvdScence.SelectionBoxItem.ToString();
                 string VideoDirectory = $"{Directory.GetCurrentDirectory()}\\Video";
@@ -279,6 +240,7 @@ namespace TakeOnThis.Server
                 Command = Command.SendText,
                 Text = txtChat.Text
             });
+            txtChat.Text = "";
         }
 
         public void SendGroupMessage(ServiceMessage message)
@@ -290,5 +252,19 @@ namespace TakeOnThis.Server
             }
         }
 
+        private void SendImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.cmbBackgroundVideos.SelectedItem == null)
+            {
+                return;
+            }
+
+            string fileName = this.cmbImages.SelectionBoxItem.ToString();
+            SendGroupMessage(new ServiceMessage
+            {
+                Command = Command.SendImage,
+                FileName = fileName
+            });
+        }
     }
 }

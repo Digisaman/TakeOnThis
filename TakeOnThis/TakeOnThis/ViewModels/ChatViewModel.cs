@@ -8,6 +8,7 @@ using System.Linq;
 using System.Collections.ObjectModel;
 using TakeOnThis.Shared.Models;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace TakeOnThis.ViewModels
 {
@@ -146,39 +147,30 @@ namespace TakeOnThis.ViewModels
                     {
                         switch (serviceMessage.Command)
                         {
-                          
-                           
+
+
                             case TakeOnThis.Shared.Models.Command.SendText:
-                                Messages.Insert(0, new ChatMessage
-                                {
-                                    Message = serviceMessage.Text,
-                                    User = user,
-                                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
-                                });
+                                InserText(user, first, serviceMessage);
                                 break;
                             case TakeOnThis.Shared.Models.Command.SendImage:
-                                Messages.Insert(0, new ChatMessage
-                                {
-                                    Message = "Display Image",
-                                    User = user,
-                                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
-                                });
+                                InserImage(user, first, serviceMessage);
                                 break;
 
-                            case TakeOnThis.Shared.Models.Command.SendVideo:
-                                Messages.Insert(0, new ChatMessage
-                                {
-                                    Message = "Display Video",
-                                    User = user,
-                                    Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
-                                });
+                                //case TakeOnThis.Shared.Models.Command.SendVideo:
+                                //    Messages.Insert(0, new ChatMessage
+                                //    {
+                                //        Message = "Display Video",
+                                //        Type = MessageType.Video,
+                                //        User = user,
+                                //        Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+                                //    });
                                 break;
                         }
                     }
                 }
                 else
                 {
-                    Messages.Clear();
+                    //Messages.Clear();
                     Messages.Insert(0, new ChatMessage
                     {
                         Message = message,
@@ -187,6 +179,57 @@ namespace TakeOnThis.ViewModels
                     });
                 }
             });
+        }
+
+        private void InserImage(string user, User first, ServiceMessage serviceMessage)
+        {
+            Messages.Insert(0, new ChatMessage
+            {
+                ImageSource = ImageSource.FromFile(GetFileAddress(MessageType.Image, serviceMessage.FileName)),
+                Message = "Display Image",
+                Type = MessageType.Image,
+                User = user,
+                Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+            });
+        }
+
+        private void InserText(string user, User first, ServiceMessage serviceMessage)
+        {
+            Messages.Insert(0, new ChatMessage
+            {
+                //ImageSource = ImageSource.FromFile(GetFileAddress(MessageType.Video, serviceMessage.FileName)),
+                Message = serviceMessage.Text,
+                Type = MessageType.Text,
+                User = user,
+                Color = first?.Color ?? Color.FromRgba(0, 0, 0, 0)
+            });
+        }
+
+        private string GetFileAddress(MessageType messageType, string filename)
+        {
+            string fileName = "";
+            try
+            {
+                string subtitleDirectoty = "";
+                switch (messageType)
+                {
+                    case MessageType.Image:  
+                        subtitleDirectoty = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DownloadCategory.Image.ToString());
+                        fileName = Path.Combine(subtitleDirectoty, filename);
+                        break;
+                    case MessageType.Video:
+                        subtitleDirectoty = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DownloadCategory.Video.ToString());
+                        fileName = Path.Combine(subtitleDirectoty, filename);
+                        break;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return fileName;
+
         }
 
         void AddRemoveUser(string name, bool add)
