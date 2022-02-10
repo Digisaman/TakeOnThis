@@ -3,7 +3,6 @@
 
     public enum DownloadCategory
     {
-        None = 0,
         Image,
         Video
     }
