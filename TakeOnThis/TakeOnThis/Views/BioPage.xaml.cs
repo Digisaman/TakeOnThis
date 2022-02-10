@@ -16,15 +16,34 @@ namespace TakeOnThis.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                this.webBrowser.Source = $"http://{Settings.ServerIP}:{Settings.ServerPort}/index.html";
+                this.webBrowser.Reload();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            //this.webBrowser.Reload();
+
+
+        }
+
+        private void webBrowser_Navigated(object sender, WebNavigatedEventArgs e)
+        {
+            this.progressBar.IsVisible = false;
+        }
+
+        private void webBrowser_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+            this.progressBar.IsVisible = true;
+        }
     }
 
-    //protected override void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    this.webBrowser.Source = $"http://{Settings.ServerIP}:{Settings.ServerPort}/index.html";
-    //    this.webBrowser.Reload();
-    //    //this.webBrowser.Reload();
-
-
-    //}
+   
 }
