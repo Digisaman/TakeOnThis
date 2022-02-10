@@ -37,8 +37,8 @@ namespace TakeOnThis.ViewModels
             Helpers.Settings.ServerIP = this.ServerIP;
             Helpers.Settings.ServerPort = this.ServerPort;
 
-            var dialogService = DependencyService.Get<IDialogService>();
-            dialogService.DisplayAlert("Information", "Seetings Saved", "");
+            //var dialogService = DependencyService.Get<IDialogService>();
+            //dialogService.DisplayAlert("Information", "Seetings Saved", "");
         }
 
         

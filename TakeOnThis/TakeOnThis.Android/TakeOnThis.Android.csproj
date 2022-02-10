@@ -55,7 +55,7 @@
     <AndroidSigningStorePass>Athr12624120@ask</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>SPASK</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Athr12624120@ask</AndroidSigningKeyPass>
-    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
