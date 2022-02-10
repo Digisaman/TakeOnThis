@@ -2,7 +2,7 @@
 using Xamarin.Forms.Xaml;
 using TakeOnThis.Core;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace TakeOnThis
 {
     public partial class App : Application

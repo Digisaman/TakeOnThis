@@ -112,7 +112,8 @@
                             Padding="5"
                             BackgroundColor="{Binding BackgroundColor}"
                             CornerRadius="20"
-                            Visual="Material">
+                                Visual="Material">
+                              
                                 <Label
                                 Margin="10,5"
                                 Text="{Binding Message}"
@@ -124,8 +125,8 @@
                             Margin="5,0,20,0"
                             Padding="5"
                             BackgroundColor="{Binding BackgroundColor}"
-                            CornerRadius="20"
-                            Visual="Material">
+                            CornerRadius="20">
+                              
                                 <Image Source="{Binding ImageSource}"
                                        WidthRequest="300"
                                        HeightRequest="300"/>
@@ -144,6 +145,7 @@
             CornerRadius="25"
             HorizontalOptions="FillAndExpand"
             Visual="Material">
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -156,7 +158,7 @@
                     ReturnCommand="{Binding SendMessageCommand}"
                     ReturnType="Send"
                     Text="{Binding ChatMessage.Message, Mode=TwoWay}"
-                    Visual="Material" />
+                    Visual="Material"/>
                 <Frame
                     Grid.Column="1"
                     Padding="0"
@@ -166,7 +168,7 @@
                     HeightRequest="40"
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand"
-                    Visual="Material"
+                  Visual="Material"
                     WidthRequest="40">
                     <ImageButton
                         BackgroundColor="Transparent"

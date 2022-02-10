@@ -3,7 +3,7 @@ using TakeOnThis.Views;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using TakeOnThis.View;
+using TakeOnThis.Views;
 
 namespace TakeOnThis
 {

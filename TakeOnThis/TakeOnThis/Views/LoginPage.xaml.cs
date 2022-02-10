@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TakeOnThis.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace TakeOnThis.View
+namespace TakeOnThis.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : TabbedPage
+    public partial class LoginPage : ContentPage
     {
-        public HomePage()
+        public LoginPage()
         {
             InitializeComponent();
+            this.BindingContext = new LoginViewModel();
         }
     }
 }

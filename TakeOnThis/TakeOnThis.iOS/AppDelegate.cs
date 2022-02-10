@@ -4,8 +4,6 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
 
 namespace TakeOnThis.iOS
 {
@@ -24,15 +22,8 @@ namespace TakeOnThis.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
-           
             global::Xamarin.Forms.Forms.Init();
-            global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new App());
-
-
-            UITabBar.Appearance.SelectedImageTintColor = ((Color)App.Current.Resources["SecondaryColor"]).ToUIColor();
 
             return base.FinishedLaunching(app, options);
         }
