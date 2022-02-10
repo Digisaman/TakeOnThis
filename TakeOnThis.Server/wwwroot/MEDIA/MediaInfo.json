@@ -1,0 +1,32 @@
+{
+  "IMAGE": [
+    {
+      "FileName": "Image01.jpg",
+      "Version": "1"
+    },
+    {
+      "FileName": "Image02.jpg",
+      "Version": "1"
+    },
+    {
+      "FileName": "Image03.jpg",
+      "Version": "1"
+    }
+  ],
+  "VIDEO": [
+    {
+      "FileName": "Video01.mp4",
+      "Version": "1"
+    },
+    {
+      "FileName": "Video02.mp4",
+      "Version": "1"
+    },
+    {
+      "FileName": "Video03.mp4",
+      "Version": "1"
+    }
+   
+
+  ]
+}

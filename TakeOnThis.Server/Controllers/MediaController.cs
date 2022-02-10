@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using TakeOnThis.Server.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TakeOnThis.Shared.Models;
 
 namespace TakeOnThis.Server.Controllers
 {
@@ -40,42 +40,31 @@ namespace TakeOnThis.Server.Controllers
             string protocol = "http";
 
             List<string> urls = new List<string>();
-            foreach (MediaFile mediafile in mediaInfo.AUDIO)
+            foreach (MediaFile mediafile in mediaInfo.IMAGE)
             {
                 FileInfo file = files.FirstOrDefault(c => c.Name == mediafile.FileName);
                 if (file != null)
                 {
-                    mediafile.Url = $"{protocol}://{localIP}:{port}/MEDIA/AUDIO/{file.Name}";
+                    mediafile.Url = $"{protocol}://{localIP}:{port}/MEDIA/IMAGE/{file.Name}";
                     mediafile.IsAvailable = true;
                     mediafile.FileSize = file.Length;
                 }
             }
 
-            foreach (MediaFile mediafile in mediaInfo.THSUB)
+            foreach (MediaFile mediafile in mediaInfo.VIDEO)
             {
                 FileInfo file = files.FirstOrDefault(c => c.Name == mediafile.FileName);
                 if (file != null)
                 {
-                    mediafile.Url = $"{protocol}://{localIP}:{port}/MEDIA/THSUB/{file.Name}";
+                    mediafile.Url = $"{protocol}://{localIP}:{port}/MEDIA/VIDEO/{file.Name}";
                     mediafile.IsAvailable = true;
                     mediafile.FileSize = file.Length;
                 }
             }
 
-            foreach (MediaFile mediafile in mediaInfo.VDSUB)
-            {
-                FileInfo file = files.FirstOrDefault(c => c.Name == mediafile.FileName);
-                if (file != null)
-                {
-                    mediafile.Url = $"{protocol}://{localIP}:{port}/MEDIA/VDSUB/{file.Name}";
-                    mediafile.IsAvailable = true;
-                    mediafile.FileSize = file.Length;
-                }
-            }
-
-            mediaInfo.AUDIO = mediaInfo.AUDIO.Where(c => c.IsAvailable).ToList();
-            mediaInfo.THSUB = mediaInfo.THSUB.Where(c => c.IsAvailable).ToList();
-            mediaInfo.VDSUB = mediaInfo.VDSUB.Where(c => c.IsAvailable).ToList();
+         
+            mediaInfo.IMAGE = mediaInfo.IMAGE.Where(c => c.IsAvailable).ToList();
+            mediaInfo.VIDEO = mediaInfo.VIDEO.Where(c => c.IsAvailable).ToList();
 
 
             return mediaInfo;

@@ -1,24 +1,19 @@
 ﻿using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.SignalR;
 using TakeOnThis.Server.Hubs;
-using System.Threading;
-using System.Diagnostics;
-using TakeOnThis.Server.Models;
 using System.Windows.Controls;
+using TakeOnThis.Shared.Models;
 
 namespace TakeOnThis.Server
 {
@@ -27,18 +22,14 @@ namespace TakeOnThis.Server
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Mode CurrentMode;
-        private volatile bool continueAutoLine;
-        private System.Timers.Timer timer;
-        private int theaterSceneSelectedIndex = 0;
+
 
         public static IHubContext<ChatHub> HUB { get; set; }
 
     
         private SecondaryWindow _SecondaryWindow;
 
-        //private HttpSelfHostServer restService;
-        //private IDisposable apiServer;
+      
         public MainWindow()
         {
             InitializeComponent();
@@ -204,12 +195,7 @@ namespace TakeOnThis.Server
             if (e.Source is TabControl)
             {
                 TabControl tab = (TabControl)e.Source;
-                this.CurrentMode = (tab.SelectedIndex == 0 ? Mode.Theater : Mode.Video);
-                SendGroupMessage(new ServiceMessage
-                {    
-                      Command = Command.ChangeMode,
-                       Mode = this.CurrentMode,
-                });
+              
                 //do work when tab is changed
             }
         }
@@ -238,15 +224,7 @@ namespace TakeOnThis.Server
       
 
 
-        public void SendGroupMessage(ServiceMessage message)
-        {
-            string messageText = Newtonsoft.Json.JsonConvert.SerializeObject(message);
-            if (HUB != null)
-            {
-                HUB.Clients.Group("Xamarin").SendAsync("ReceiveMessage", "User1", messageText);
-            }
-        }
-
+        
         private async void btnStartServer_Click(object sender, RoutedEventArgs e)
         {
             string localIP = Helpers.NetworkHelpers.GetLocalIPv4();
@@ -296,10 +274,21 @@ namespace TakeOnThis.Server
 
         private void SendChat_Click(object sender, RoutedEventArgs e)
         {
+            SendGroupMessage(new ServiceMessage
+            {
+                Command = Command.SendText,
+                Text = txtChat.Text
+            });
+        }
+
+        public void SendGroupMessage(ServiceMessage message)
+        {
+            string messageText = Newtonsoft.Json.JsonConvert.SerializeObject(message);
             if (HUB != null)
             {
-                HUB.Clients.Group("Xamarin").SendAsync("ReceiveMessage", "User1", txtChat.Text);
+                HUB.Clients.Group(ChatSettings.DefaultChatGroup).SendAsync(ChatSettings.RecieveCommand, ChatSettings.ServerUser, messageText);
             }
         }
+
     }
 }
