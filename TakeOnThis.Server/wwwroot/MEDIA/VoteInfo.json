@@ -1,0 +1,126 @@
+{
+  "Questions": {
+    "Daniel": [
+      {
+        "Id": 1,
+        "Title": "We believe you have been active on online forums. Could you explain to us what are those forums and for what purpose you have been using them?"
+      },
+      {
+        "Id": 2,
+        "Title": "Do you like to read? What type of books do you read? "
+      },
+      {
+        "Id": 3,
+        "Title": "Can you describe in your own words the meaning of the word JUSTICE?"
+      },
+      {
+        "Id": 4,
+        "Title": "Would you say we have the right number of forces in the street right now to protect you?"
+      },
+      {
+        "Id": 5,
+        "Title": "Do you think this country is under a humanitarian crisis?"
+      },
+      {
+        "Id": 6,
+        "Title": "What do you think about this country having an unelected government?"
+      },
+      {
+        "Id": 7,
+        "Title": "What do you consider a person who believes that white people constitute a superior race and should therefore dominate society, to the exclusion or detriment of other racial and ethnic groups?"
+      },
+      {
+        "Id": 8,
+        "Title": "You have been at the police before. How do you describe that encounter? "
+      }
+    ],
+    "Laura": [
+      {
+        "Id": 1,
+        "Title": "Have not thought about a different way to make your voice heard?"
+      },
+      {
+        "Id": 2,
+        "Title": "Are you registered to vote? How relevant do you think you are into the party you are voting for?"
+      },
+      {
+        "Id": 3,
+        "Title": "Have you ever considered to live somewhere else? Other country that can make you happier?"
+      },
+      {
+        "Id": 4,
+        "Title": "Do you feel like a prisoner in your own country? Why?"
+      },
+      {
+        "Id": 5,
+        "Title": "How would you describe your marriage? "
+      },
+      {
+        "Id": 6,
+        "Title": "Why do you think someone would do such an act?"
+      },
+      {
+        "Id": 7,
+        "Title": "How is your sleep at night? Do you sleep well…are you having difficulties to sleep? "
+      },
+      {
+        "Id": 8,
+        "Title": "What was your first thing that came to your mind when you heard the explosion?"
+      }
+
+    ],
+    "Tahere" :[
+      {
+        "Id": 1,
+        "Title": "Do you find yourself vulnerable in this society? Do you want to prove yourself by seeking attention in this barbaric way?"
+      },
+      {
+        "Id": 2,
+        "Title": "Have you ever participated in groups on internet known as virtual training camp?"
+      },
+      {
+        "Id": 3,
+        "Title": "Do we understand you have been through an indescribable moment … surrounded by so many people… shouting…running…scared… in the middle of the chaos…what was your first reaction?"
+      },
+      {
+        "Id": 4,
+        "Title": "How is your relationship with your peers at work? Are you happy with your salary? Your work conditions? "
+      },
+      {
+        "Id": 5,
+        "Title": "What is your opinion about the problems we are facing nowadays with migration?"
+      },
+      {
+        "Id": 6,
+        "Title": "Do you always have with you the correct documents to travel? Had you been stopped at an airport where you have not been allowed to enter the country? Or there has been a misinformation in the documentation presented? "
+      },
+      {
+        "Id": 7,
+        "Title": "If you must call someone, right now, because he or she has the key to set you free from ALL this, who would you call?"
+      },
+      {
+        "Id": 8,
+        "Title": "Let us go back when you were teenager. In which way, would you say, your life has changed? what would you say to the young you? delicate human being."
+      }
+    ]
+
+  },
+  "Vote": {
+    "Subject": "Who do you suspect committed an act of terrorism?",
+    "Options": [
+      {
+        "Key": "Daniel",
+        "Value": "Daniel Bailey Williams"
+      },
+      {
+        "Key": "Laura",
+        "Value": "Laura Evans"
+      },
+      {
+        "Key": "Tahere",
+        "Value": "Tahere Roshan"
+      }
+    ]
+
+  }
+}

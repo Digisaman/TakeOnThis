@@ -74,5 +74,27 @@ namespace TakeOnThis.Server.Controllers
         }
 
 
+        [HttpGet]
+        [Route(nameof(GetVoteInfo))]
+        public VoteInfo GetVoteInfo()
+        {
+            DirectoryInfo mediaDirectory = new DirectoryInfo($"{Directory.GetCurrentDirectory()}\\wwwroot\\MEDIA");
+
+
+            VoteInfo voteInfo = null;
+            string voteInfoFilePath = $"{mediaDirectory}\\VoteInfo.json";
+            using (StreamReader streamReader = new StreamReader(voteInfoFilePath))
+            {
+                string content = streamReader.ReadToEnd();
+                voteInfo = JsonConvert.DeserializeObject<VoteInfo>(content);
+            }
+
+            return voteInfo;
+
+
+
+        }
+
+
     }
 }
