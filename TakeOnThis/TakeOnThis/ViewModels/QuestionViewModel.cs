@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TakeOnThis.Model;
 using TakeOnThis.Shared.Models;
 using static TakeOnThis.Shared.Models.Questions;
 
@@ -13,10 +15,10 @@ namespace TakeOnThis.ViewModels
     public class QuestionViewModel : BaseViewModel
     {
         #region Properties
-        public ObservableCollection<QuestionDetail> Questions { get; }
+        public ObservableCollection<ObservableQuestion> Questions { get; }
 
-        QuestionDetail selectedQuestion = null;
-        public QuestionDetail SelectedQuestion
+        ObservableQuestion selectedQuestion = null;
+        public ObservableQuestion SelectedQuestion
         {
             get { return this.selectedQuestion; }
             set { SetProperty(ref this.selectedQuestion, value); }
@@ -32,7 +34,7 @@ namespace TakeOnThis.ViewModels
 
         public QuestionViewModel()
         {
-            Questions = new ObservableCollection<QuestionDetail>();
+            Questions = new ObservableCollection<ObservableQuestion>();
 
             LoadQuestionsCommand = new MvvmHelpers.Commands.Command(async () => await LoadQuestions());
             SubmitQuestionCommand = new MvvmHelpers.Commands.Command(async () => await SubmitQuestion());
@@ -42,13 +44,22 @@ namespace TakeOnThis.ViewModels
         {
             try
             {
+                SelectedQuestion = Questions.FirstOrDefault(c => c.IsSelected);
                 if (this.SelectedQuestion == null)
                 {
+                    return;
 
                 }
-                SelectedQuestion.Usernanme = Helpers.Settings.UserName;
+
+                SubmitQuestion submitQuestion = new SubmitQuestion
+                {
+                    Character = CurrentCharcter.ToString(),
+                    Id = this.SelectedQuestion.Id,
+                    Title = this.SelectedQuestion.Title,
+                    Usernanme = Helpers.Settings.UserName
+                };
                 Uri uri = new Uri($"{(TakeOnThis.Helpers.Settings.UseHttps ? "https" : "http")}://{TakeOnThis.Helpers.Settings.ServerIP}:{TakeOnThis.Helpers.Settings.ServerPort}/api/media/submitquestion");
-                var json = JsonConvert.SerializeObject(SelectedQuestion);
+                var json = JsonConvert.SerializeObject(submitQuestion);
                 var data = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpClient client = new HttpClient();
@@ -89,8 +100,12 @@ namespace TakeOnThis.ViewModels
             Questions.Clear();
             foreach (var item in questions)
             {
-                item.Character = CurrentCharcter;
-                Questions.Add(item);
+                Questions.Add(new ObservableQuestion
+                {
+                    Id = item.Id,
+                    IsSelected = item.IsSelected,
+                    Title = item.Title
+                });
             }
 
         }

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakeOnThis.Views.LauraPage"
+             xmlns:model="clr-namespace:TakeOnThis.Models"
+             xmlns:viewmodel="clr-namespace:TakeOnThis.ViewModels"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <viewmodel:QuestionViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView SelectionMode="Single" ItemsSource="{Binding Questions}" 
+                      SelectedItem="{Binding SelectedQuestion, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <RadioButton IsChecked="{Binding IsSelected}"/>
+                                    <Label VerticalOptions="StartAndExpand" Text="{Binding Title}" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Margin="0,10,0,0" Text="Submit Question"
+                        Command="{Binding SubmitQuestionCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="{StaticResource SecondaryTextColor}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -32,10 +32,11 @@ namespace TakeOnThis.Shared.Models
 
             public bool IsSelected { get; set; }
 
-            public Character Character { get; set; }
+            //public Character Character { get; set; }
 
-            public string Usernanme { get; set; }
+            //public string Usernanme { get; set; }
         }
+
     }
 
     public class Vote
