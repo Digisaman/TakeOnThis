@@ -71,7 +71,7 @@ namespace TakeOnThis.Server
                 HUB.Clients.Group("Xamarin").SendAsync("ReceiveMessage", "User1", "Start");
                 host.Run();
 
-
+                
             }
             catch (Exception ex)
             {
@@ -196,6 +196,7 @@ namespace TakeOnThis.Server
                 txtServerAddress.Text = $"{localIP}:{port}";
                 Task task = new Task(() => StartServer(localIP, port));
                 task.Start();
+                SetQuestionDataSource();
                 MessageBox.Show("Server Started");
             }
             else
@@ -270,6 +271,12 @@ namespace TakeOnThis.Server
 
         private void btnRefreshQuestion_Click(object sender, RoutedEventArgs e)
         {
+            SetQuestionDataSource();
+        }
+
+        private void SetQuestionDataSource()
+        {
+            this.dgQuestions.ItemsSource = null;
             this.dgQuestions.ItemsSource = MediaController.Questions;
         }
     }

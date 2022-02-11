@@ -97,7 +97,13 @@
         <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate local:SettingsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Question for Daniel" Icon="icon_feed.png">
-        <ShellContent Route="Danielpage" ContentTemplate="{DataTemplate local:DanielPage}" />
+        <ShellContent Route="DanielPage" ContentTemplate="{DataTemplate local:DanielPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Question for Laura" Icon="icon_feed.png">
+        <ShellContent Route="LauraPage" ContentTemplate="{DataTemplate local:LauraPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Question for Tahere" Icon="icon_feed.png">
+        <ShellContent Route="TaherePage" ContentTemplate="{DataTemplate local:TaherePage}" />
     </FlyoutItem>
 
 

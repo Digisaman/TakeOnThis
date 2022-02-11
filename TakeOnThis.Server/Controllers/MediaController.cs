@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using TakeOnThis.Shared.Models;
@@ -15,16 +16,21 @@ namespace TakeOnThis.Server.Controllers
     {
 
         #region Properties
-        public static List<SubmitQuestion> Questions
+        private static ObservableCollection<SubmitQuestion> _Questions;
+        public static ObservableCollection<SubmitQuestion> Questions
         {
-            get;
-            private set;
+            get
+            {
+                if (_Questions == null)
+                {
+                    _Questions = new ObservableCollection<SubmitQuestion>();
+                }
+                return _Questions;
+            }
+            
         }
 
-        public MediaController()
-        {
-            Questions = new List<SubmitQuestion>();
-        }
+        
         #endregion
 
         [HttpGet]
@@ -117,7 +123,8 @@ namespace TakeOnThis.Server.Controllers
         {
             try
             {
-                SubmitQuestion existingQuestion = Questions.FirstOrDefault(c => c.Usernanme == question.Usernanme);
+                SubmitQuestion existingQuestion = Questions.FirstOrDefault(c => c.Usernanme == question.Usernanme
+                    && c.Character == question.Character);
                 if (existingQuestion != null)
                 {
                     existingQuestion.Character = question.Character;
