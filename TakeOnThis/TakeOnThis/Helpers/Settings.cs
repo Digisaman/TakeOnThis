@@ -1,4 +1,5 @@
 ﻿using System;
+using TakeOnThis.Shared.Models;
 using Xamarin.Essentials;
 
 namespace TakeOnThis.Helpers
@@ -16,6 +17,8 @@ namespace TakeOnThis.Helpers
         //#endif
 
         static readonly string mefiaInfo = "";
+
+        static readonly string voteInfo = "";
 
         static readonly string defaultIP = "192.168.0.100";
 
@@ -63,5 +66,16 @@ namespace TakeOnThis.Helpers
             get => Preferences.Get(nameof(MediaInfo), mefiaInfo);
             set => Preferences.Set(nameof(MediaInfo), value);
         }
+
+
+        public static VoteInfo VoteInfo
+        {
+            //get => Preferences.Get(nameof(VoteInfo), voteInfo);
+            //set => Preferences.Set(nameof(VoteInfo), value);
+            get;
+            set;
+        }
+
+
     }
 }
