@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.SignalR;
 using TakeOnThis.Server.Hubs;
 using System.Windows.Controls;
 using TakeOnThis.Shared.Models;
+using TakeOnThis.Server.Controllers;
 
 namespace TakeOnThis.Server
 {
@@ -265,6 +266,11 @@ namespace TakeOnThis.Server
                 Command = Command.SendImage,
                 FileName = fileName
             });
+        }
+
+        private void btnRefreshQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            this.dgQuestions.ItemsSource = MediaController.Questions;
         }
     }
 }

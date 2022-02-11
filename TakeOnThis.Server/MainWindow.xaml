@@ -93,6 +93,14 @@
                     <Button Grid.Row="0" Grid.Column="1" Content="Play Video"  x:Name="btnPlayVideo" Click="btnPlayVideo_Click"/>
                 </Grid>
             </TabItem>
+            <TabItem x:Name="tabQuestion" Header="Questions">
+                <StackPanel>
+                    <Button x:Name="btnRefreshQuestion" Content="Refresh" Click="btnRefreshQuestion_Click"/>
+                    <DataGrid x:Name="dgQuestions" AutoGenerateColumns="True">
+                    
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
             <TabItem x:Name="tabVoting" Header="Voting"/>
         </TabControl>
     </Grid>

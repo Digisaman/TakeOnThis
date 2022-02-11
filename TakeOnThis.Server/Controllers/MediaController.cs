@@ -15,7 +15,7 @@ namespace TakeOnThis.Server.Controllers
     {
 
         #region Properties
-        public static List<QuestionDetail> Questions
+        public static List<SubmitQuestion> Questions
         {
             get;
             private set;
@@ -23,7 +23,7 @@ namespace TakeOnThis.Server.Controllers
 
         public MediaController()
         {
-            Questions = new List<QuestionDetail>();
+            Questions = new List<SubmitQuestion>();
         }
         #endregion
 
@@ -113,20 +113,21 @@ namespace TakeOnThis.Server.Controllers
 
         [HttpPost]
         [Route(nameof(SubmitQuestion))]
-        public void SubmitQuestion([FromBody] QuestionDetail questionDetail)
+        public void SubmitQuestion([FromBody] SubmitQuestion question)
         {
             try
             {
-                QuestionDetail existingQuestion = Questions.FirstOrDefault(c => c.Usernanme == questionDetail.Usernanme);
+                SubmitQuestion existingQuestion = Questions.FirstOrDefault(c => c.Usernanme == question.Usernanme);
                 if (existingQuestion != null)
                 {
-                    existingQuestion.Character = questionDetail.Character;
-                    existingQuestion.Id = questionDetail.Id;
-                    existingQuestion.Title = questionDetail.Title;
+                    existingQuestion.Character = question.Character;
+                    existingQuestion.Id = question.Id;
+                    existingQuestion.Title = question.Title;
+                    existingQuestion.Usernanme = question.Usernanme;
                 }
                 else
                 {
-                    Questions.Add(questionDetail);
+                    Questions.Add(question);
                 }
             }
             catch(Exception ex)
