@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace TakeOnThis.ViewModels
 {
-    public class AboutViewModel : ViewModelBase
+    public class AboutViewModel : BaseViewModel
     {
         public AboutViewModel()
         {

@@ -8,7 +8,7 @@ using TakeOnThis.Interfaces;
 
 namespace TakeOnThis.ViewModels
 {
-    public class ViewModelBase : BaseViewModel
+    public class ChatBasedViewModel : BaseViewModel
     {
         ChatService chatService;
         public ChatService ChatService =>

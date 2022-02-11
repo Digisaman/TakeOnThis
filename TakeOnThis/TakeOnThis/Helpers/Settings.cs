@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using TakeOnThis.Shared.Models;
 using Xamarin.Essentials;
 
@@ -28,12 +29,12 @@ namespace TakeOnThis.Helpers
         public static bool UseHttps
         {
             get => false;
-         
+
         }
 
         public static string ServerPort
         {
-           
+
             get => Preferences.Get(nameof(ServerPort), defaultPort);
             set => Preferences.Set(nameof(ServerPort), value);
         }
@@ -70,10 +71,28 @@ namespace TakeOnThis.Helpers
 
         public static VoteInfo VoteInfo
         {
-            //get => Preferences.Get(nameof(VoteInfo), voteInfo);
-            //set => Preferences.Set(nameof(VoteInfo), value);
-            get;
-            set;
+            get
+            {
+                if(!string.IsNullOrEmpty(VoteInfoJson))
+                {
+                    return JsonConvert.DeserializeObject<VoteInfo>(VoteInfoJson);
+                }
+                return new VoteInfo();
+            }
+            set
+            {
+                if ( value != null)
+                {
+                    VoteInfoJson = JsonConvert.SerializeObject(value);
+                }
+
+            }
+        }
+
+        private static string VoteInfoJson
+        {
+            get => Preferences.Get(nameof(VoteInfo), voteInfo);
+            set => Preferences.Set(nameof(VoteInfo), value);
         }
 
 

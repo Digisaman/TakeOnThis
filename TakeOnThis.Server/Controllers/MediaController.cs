@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TakeOnThis.Shared.Models;
+using static TakeOnThis.Shared.Models.Questions;
 
 namespace TakeOnThis.Server.Controllers
 {
@@ -12,6 +13,20 @@ namespace TakeOnThis.Server.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
+
+        #region Properties
+        public static List<QuestionDetail> Questions
+        {
+            get;
+            private set;
+        }
+
+        public MediaController()
+        {
+            Questions = new List<QuestionDetail>();
+        }
+        #endregion
+
         [HttpGet]
         [Route(nameof(GetCurrentTime))]
         public DateTime GetCurrentTime()
@@ -93,6 +108,31 @@ namespace TakeOnThis.Server.Controllers
 
 
 
+        }
+
+
+        [HttpPost]
+        [Route(nameof(SubmitQuestion))]
+        public void SubmitQuestion([FromBody] QuestionDetail questionDetail)
+        {
+            try
+            {
+                QuestionDetail existingQuestion = Questions.FirstOrDefault(c => c.Usernanme == questionDetail.Usernanme);
+                if (existingQuestion != null)
+                {
+                    existingQuestion.Character = questionDetail.Character;
+                    existingQuestion.Id = questionDetail.Id;
+                    existingQuestion.Title = questionDetail.Title;
+                }
+                else
+                {
+                    Questions.Add(questionDetail);
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
 

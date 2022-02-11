@@ -12,7 +12,7 @@ using System.IO;
 
 namespace TakeOnThis.ViewModels
 {
-    public class ChatViewModel : ViewModelBase
+    public class ChatViewModel : ChatBasedViewModel
     {
         public ChatMessage ChatMessage { get; }
 

@@ -29,6 +29,12 @@ namespace TakeOnThis.Shared.Models
             public int Id { get; set; }
 
             public string Title { get; set; }
+
+            public bool IsSelected { get; set; }
+
+            public Character Character { get; set; }
+
+            public string Usernanme { get; set; }
         }
     }
 

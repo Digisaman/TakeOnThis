@@ -7,7 +7,7 @@
       },
       {
         "Id": 2,
-        "Title": "Do you like to read? What type of books do you read? "
+        "Title": "Do you like to read? What type of books do you read?"
       },
       {
         "Id": 3,
@@ -31,7 +31,7 @@
       },
       {
         "Id": 8,
-        "Title": "You have been at the police before. How do you describe that encounter? "
+        "Title": "You have been at the police before. How do you describe that encounter?"
       }
     ],
     "Laura": [
@@ -53,7 +53,7 @@
       },
       {
         "Id": 5,
-        "Title": "How would you describe your marriage? "
+        "Title": "How would you describe your marriage?"
       },
       {
         "Id": 6,
@@ -61,7 +61,7 @@
       },
       {
         "Id": 7,
-        "Title": "How is your sleep at night? Do you sleep well…are you having difficulties to sleep? "
+        "Title": "How is your sleep at night? Do you sleep well…are you having difficulties to sleep?"
       },
       {
         "Id": 8,
@@ -84,7 +84,7 @@
       },
       {
         "Id": 4,
-        "Title": "How is your relationship with your peers at work? Are you happy with your salary? Your work conditions? "
+        "Title": "How is your relationship with your peers at work? Are you happy with your salary? Your work conditions?"
       },
       {
         "Id": 5,
@@ -92,7 +92,7 @@
       },
       {
         "Id": 6,
-        "Title": "Do you always have with you the correct documents to travel? Had you been stopped at an airport where you have not been allowed to enter the country? Or there has been a misinformation in the documentation presented? "
+        "Title": "Do you always have with you the correct documents to travel? Had you been stopped at an airport where you have not been allowed to enter the country? Or there has been a misinformation in the documentation presented?"
       },
       {
         "Id": 7,

@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace TakeOnThis.ViewModels
 {
-    public class SettingsViewModel : ViewModelBase
+    public class SettingsViewModel : BaseViewModel
     {
         
         public MvvmHelpers.Commands.Command SaveSettingsCommand { get; }
