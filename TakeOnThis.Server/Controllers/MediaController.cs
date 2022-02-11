@@ -179,9 +179,9 @@ namespace TakeOnThis.Server.Controllers
                 int lauraCount = Votes.Count(c => c.Character == Character.Laura.ToString());
                 VoteResponse response = new VoteResponse();
 
-                response.TahereVote = Math.Round( ((double) tahereCount) / 100 , 1);
-                response.DanielVote = Math.Round(((double)danielCount) / 100, 1);
-                response.LauraVote = Math.Round(((double)lauraCount) / 100, 1);
+                response.TahereVote = ((double)tahereCount) / 100;
+                response.DanielVote = ((double)danielCount) / 100;
+                response.LauraVote =((double)lauraCount) / 100;
                 return response;
             }
             catch (Exception ex)

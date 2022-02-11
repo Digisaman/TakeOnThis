@@ -105,6 +105,9 @@
     <FlyoutItem Title="Question for Tahere" Icon="icon_feed.png">
         <ShellContent Route="TaherePage" ContentTemplate="{DataTemplate local:TaherePage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Voting" Icon="icon_feed.png">
+        <ShellContent Route="VotePage" ContentTemplate="{DataTemplate local:VotePage}" />
+    </FlyoutItem>
 
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

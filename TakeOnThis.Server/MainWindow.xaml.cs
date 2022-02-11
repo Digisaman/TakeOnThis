@@ -196,7 +196,7 @@ namespace TakeOnThis.Server
                 txtServerAddress.Text = $"{localIP}:{port}";
                 Task task = new Task(() => StartServer(localIP, port));
                 task.Start();
-                SetQuestionDataSource();
+                //SetQuestionDataSource();
                 MessageBox.Show("Server Started");
             }
             else
@@ -278,6 +278,17 @@ namespace TakeOnThis.Server
         {
             this.dgQuestions.ItemsSource = null;
             this.dgQuestions.ItemsSource = MediaController.Questions;
+        }
+
+        private void btnRefreshVote_Click(object sender, RoutedEventArgs e)
+        {
+            SetVoteDataSource();
+        }
+
+        private void SetVoteDataSource()
+        {
+            this.dgVote.ItemsSource = null;
+            this.dgVote.ItemsSource = MediaController.Votes;
         }
     }
 }

@@ -26,8 +26,6 @@ namespace TakeOnThis.ViewModels
             set { SetProperty(ref this.selectedQuestion, value); }
         }
 
-        public Character CurrentCharcter { get; set; }
-
         public string Subject { get; set; }
         #endregion
         #region Commands
@@ -57,7 +55,7 @@ namespace TakeOnThis.ViewModels
 
                 SubmitVote submitVote = new SubmitVote
                 {
-                    Character = CurrentCharcter.ToString(),
+                    Character = SelectedQuestion.Key,
                     Usernanme = Helpers.Settings.UserName
                 };
                 Uri uri = new Uri($"{(TakeOnThis.Helpers.Settings.UseHttps ? "https" : "http")}://{TakeOnThis.Helpers.Settings.ServerIP}:{TakeOnThis.Helpers.Settings.ServerPort}/api/media/submitvote");
@@ -103,21 +101,23 @@ namespace TakeOnThis.ViewModels
 
         private async Task LoadQuestions()
         {
-            if (CurrentCharcter == Character.None)
+            try
             {
-                return;
-            }
-
-            Vote.Option[] options = Helpers.Settings.VoteInfo.Vote.Options.ToArray();
-            this.Subject = Helpers.Settings.VoteInfo.Vote.Subject;
-            Options.Clear();
-            foreach (var item in options)
-            {
-                Options.Add(new ObservableQuestion
+                Vote.Option[] options = Helpers.Settings.VoteInfo.Vote.Options.ToArray();
+                this.Subject = Helpers.Settings.VoteInfo.Vote.Subject;
+                Options.Clear();
+                foreach (var item in options)
                 {
-                    Key = item.Key,
-                    Title = item.Value
-                });
+                    Options.Add(new ObservableQuestion
+                    {
+                        Key = item.Key,
+                        Title = item.Value
+                    });
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
 
         }

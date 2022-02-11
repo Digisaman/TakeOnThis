@@ -101,7 +101,14 @@
                     </DataGrid>
                 </StackPanel>
             </TabItem>
-            <TabItem x:Name="tabVoting" Header="Voting"/>
+            <TabItem x:Name="tabVoting" Header="Voting">
+                <StackPanel>
+                    <Button x:Name="btnRefreshVote" Content="Refresh" Click="btnRefreshVote_Click"/>
+                    <DataGrid x:Name="dgVote" AutoGenerateColumns="True">
+
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 
