@@ -112,7 +112,11 @@ namespace TakeOnThis.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            this.mediaInfo = await GetFileUrls();
+            this.mediaInfo = await GetMediaInfo();
+
+            Helpers.Settings.VoteInfo = await GetVoteInfo();
+
+
             this.currentIndex = 0;
             
             if (this.mediaInfo.VIDEO.Count > 0)
@@ -124,7 +128,7 @@ namespace TakeOnThis.Views
 
         }
 
-        public async Task<MediaInfo> GetFileUrls()
+        public async Task<MediaInfo> GetMediaInfo()
         {
             MediaInfo info = null;
             try
@@ -136,6 +140,27 @@ namespace TakeOnThis.Views
                 {
                     string content = await response.Content.ReadAsStringAsync();
                     info = JsonConvert.DeserializeObject<MediaInfo>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            return info;
+        }
+
+        public async Task<VoteInfo> GetVoteInfo()
+        {
+            VoteInfo info = null;
+            try
+            {
+                Uri uri = new Uri($"{(TakeOnThis.Helpers.Settings.UseHttps ? "https" : "http")}://{TakeOnThis.Helpers.Settings.ServerIP}:{TakeOnThis.Helpers.Settings.ServerPort}/api/media/GetVoteInfo");
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    info = JsonConvert.DeserializeObject<VoteInfo>(content);
                 }
             }
             catch (Exception ex)
