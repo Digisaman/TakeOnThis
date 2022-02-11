@@ -15,6 +15,14 @@ namespace TakeOnThis.Model
             set => SetProperty(ref id, value);
         }
 
+        private string key;
+
+        public string Key
+        {
+            get => key;
+            set => SetProperty(ref key, value);
+        }
+
         private string title = "";
 
         public string Title
@@ -31,4 +39,28 @@ namespace TakeOnThis.Model
         }
 
     }
+
+    public class ObservableVoteResponse : ObservableObject
+    {
+ 
+
+        private double votePercent;
+
+        public double VotePercent
+        {
+            get => votePercent;
+            set => SetProperty(ref votePercent, value);
+        }
+
+        private string character = "";
+
+        public string Charcter
+        {
+            get => character;
+            set => SetProperty(ref character, value);
+        }
+
+    }
+
+
 }

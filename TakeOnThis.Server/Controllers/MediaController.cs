@@ -30,7 +30,19 @@ namespace TakeOnThis.Server.Controllers
             
         }
 
-        
+        private static ObservableCollection<SubmitVote> _Votes;
+        public static ObservableCollection<SubmitVote> Votes
+        {
+            get
+            {
+                if (_Votes == null)
+                {
+                    _Votes = new ObservableCollection<SubmitVote>();
+                }
+                return _Votes;
+            }
+
+        }
         #endregion
 
         [HttpGet]
@@ -140,6 +152,41 @@ namespace TakeOnThis.Server.Controllers
             catch(Exception ex)
             {
 
+            }
+        }
+
+        [HttpPost]
+        [Route(nameof(SubmitVote))]
+        public VoteResponse SubmitVote([FromBody] SubmitVote vote)
+        {
+            
+            try
+            {
+                
+                SubmitVote existingQuestion = Votes.FirstOrDefault(c => c.Usernanme == vote.Usernanme);
+                if (existingQuestion != null)
+                {
+                    existingQuestion.Character = vote.Character;
+                    existingQuestion.Usernanme = vote.Usernanme;
+                }
+                else
+                {
+                    Votes.Add(vote);
+                }
+
+                int tahereCount = Votes.Count(c => c.Character == Character.Tahere.ToString());
+                int danielCount = Votes.Count(c => c.Character == Character.Daniel.ToString());
+                int lauraCount = Votes.Count(c => c.Character == Character.Laura.ToString());
+                VoteResponse response = new VoteResponse();
+
+                response.TahereVote = Math.Round( ((double) tahereCount) / 100 , 1);
+                response.DanielVote = Math.Round(((double)danielCount) / 100, 1);
+                response.LauraVote = Math.Round(((double)lauraCount) / 100, 1);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new VoteResponse();
             }
         }
 
