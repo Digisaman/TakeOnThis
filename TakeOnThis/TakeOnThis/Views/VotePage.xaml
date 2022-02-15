@@ -12,21 +12,24 @@
         <StackLayout>
             <Label Text="Who do you suspect committed ac act of terrorism?"/>
             
-            <ListView SelectionMode="Single" ItemsSource="{Binding Options}" 
+             <CollectionView SelectionMode="None" ItemsSource="{Binding Options}" 
                       SelectedItem="{Binding SelectedQuestion, Mode=TwoWay}">
-                <ListView.ItemTemplate>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
+                        <StackLayout>
+                            <RadioButton Content="{Binding Title}" IsChecked="{Binding IsSelected}"/>
+                        </StackLayout>
+                        
+                            <!--<StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <RadioButton IsChecked="{Binding IsSelected}"/>
+                                    <RadioButton Content="{Binding Title}" IsChecked="{Binding IsSelected}"/>
                                     <Label VerticalOptions="StartAndExpand" Text="{Binding Title}" LineBreakMode="WordWrap"/>
                                 </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
+                            </StackLayout>-->
+                        
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Label Text="In order to see the result, you need to vote."/>
             <Button Margin="0,10,0,0" Text="Submit Vote"

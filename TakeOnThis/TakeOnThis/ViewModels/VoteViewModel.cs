@@ -37,7 +37,7 @@ namespace TakeOnThis.ViewModels
         public VoteViewModel()
         {
             Options = new ObservableCollection<ObservableQuestion>();
-
+            Votes = new ObservableCollection<ObservableVoteResponse>();
             LoadVoteCommand = new MvvmHelpers.Commands.Command(async () => await LoadQuestions());
             SubmitVoteCommand = new MvvmHelpers.Commands.Command(async () => await SubmitVote());
         }
@@ -74,12 +74,6 @@ namespace TakeOnThis.ViewModels
 
                     Votes.Add(new ObservableVoteResponse
                     {
-                        Charcter = Character.Tahere.ToString(),
-                        VotePercent = voteResult.TahereVote
-                    });
-
-                    Votes.Add(new ObservableVoteResponse
-                    {
                         Charcter = Character.Daniel.ToString(),
                         VotePercent = voteResult.DanielVote
                     });
@@ -88,6 +82,12 @@ namespace TakeOnThis.ViewModels
                     {
                         Charcter = Character.Laura.ToString(),
                         VotePercent = voteResult.LauraVote
+                    });
+
+                    Votes.Add(new ObservableVoteResponse
+                    {
+                        Charcter = Character.Tahere.ToString(),
+                        VotePercent = voteResult.TahereVote
                     });
 
 
