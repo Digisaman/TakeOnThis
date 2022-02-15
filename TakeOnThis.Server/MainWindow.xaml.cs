@@ -93,6 +93,7 @@ namespace TakeOnThis.Server
                   IPAddress address = IPAddress.Parse(args[0]);
                   int port = Int32.Parse(args[1]);
                   options.Listen(address, port);
+                   
               })
               .UseStartup<Startup>();
           });

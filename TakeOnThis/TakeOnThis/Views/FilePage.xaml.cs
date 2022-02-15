@@ -3,12 +3,10 @@ using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-
+using TakeOnThis.Interfaces;
+using TakeOnThis.Shared.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using TakeOnThis.Shared.Models;
-using TakeOnThis.Interfaces;
-using TakeOnThis.Views;
 
 namespace TakeOnThis.Views
 {
@@ -47,7 +45,7 @@ namespace TakeOnThis.Views
                 //DisplayAlert("TakeOnThins", "File Saved Successfully", "Close");
                 if (mediaInfo.CurrentCategory == DownloadCategory.Video)
                 {
-                    if ((currentIndex+1) < mediaInfo.VIDEO.Count)
+                    if ((currentIndex + 1) < mediaInfo.VIDEO.Count)
                     {
                         progress = ((float)(currentIndex + 1) / (float)mediaInfo.VIDEO.Count);
                         // directly set the new progress value
@@ -86,7 +84,7 @@ namespace TakeOnThis.Views
                     {
                         progress = 1;
                         currentIndex = 0;
-                        
+
                         await defaultProgressBar.ProgressTo(progress, 500, Easing.Linear);
                         this.lblTitle.Text = "Download Completed";
                         Thread.Sleep(1000);
@@ -118,7 +116,7 @@ namespace TakeOnThis.Views
 
 
             this.currentIndex = 0;
-            
+
             if (this.mediaInfo.VIDEO.Count > 0)
             {
                 this.lblTitle.Text = "Downloading Video files...";
