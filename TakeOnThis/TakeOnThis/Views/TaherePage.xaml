@@ -17,7 +17,7 @@
                         <ViewCell>
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal">
-                                    <RadioButton IsChecked="{Binding IsSelected}"/>
+                                    <RadioButton GroupName="RD" IsChecked="{Binding IsSelected}"/>
                                     <Label VerticalOptions="StartAndExpand" Text="{Binding Title}" LineBreakMode="WordWrap"/>
                                 </StackLayout>
                             </StackLayout>

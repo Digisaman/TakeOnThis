@@ -17,7 +17,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-                            <RadioButton Content="{Binding Title}" IsChecked="{Binding IsSelected}"/>
+                            <RadioButton GroupName="RD" Content="{Binding Title}" IsChecked="{Binding IsSelected}"/>
                         </StackLayout>
                         
                             <!--<StackLayout>
